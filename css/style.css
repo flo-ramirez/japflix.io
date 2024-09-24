@@ -26,3 +26,26 @@ main {
 .offcanvas-top{
     height: fit-content;
 }
+
+/* Estilos para las estrellas */
+.stars-outer {
+    display: inline-block;
+    position: relative;
+    font-family: FontAwesome;
+  }
+  .stars-outer::before {
+    content: "\f005 \f005 \f005 \f005 \f005"; /* 5 estrellas vacías */
+    color: #ccc;
+  }
+  .stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    color: #f8ce0b; /* Color de estrellas llenas */
+  }
+  .stars-inner::before {
+    content: "\f005 \f005 \f005 \f005 \f005"; /* 5 estrellas llenas */
+  }
