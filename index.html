@@ -9,7 +9,31 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/style.css">
-  
+
+  <style>
+    .pelicula-detalle {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      display: none; /* Oculto por defecto */
+      z-index: 1000;
+    }
+
+    .dropdown-menu {
+      background-color: #f8f9fa; /* Fondo claro */
+      padding: 10px;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    .dropdown-menu li {
+      padding: 5px 0;
+      list-style: none;
+    }
+  </style>
 </head>
 
 <body class="bg-dark">
@@ -28,6 +52,29 @@
       <ul class="list-group container" id="lista">
       </ul>
     </div>
+
+    <!-- Contenedor de la película seleccionada -->
+    <div id="peliculaSeleccionada" class="pelicula-detalle">
+      <h2 id="tituloPelicula"></h2>
+      <p id="overviewPelicula"></p>
+      <ul id="generosPelicula"></ul>
+
+      <!-- Botón desplegable para mostrar más detalles -->
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownDetalles" data-bs-toggle="dropdown" aria-expanded="false">
+          Más detalles
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownDetalles">
+          <li><strong>Año de lanzamiento:</strong> <span id="anioLanzamiento"></span></li>
+          <li><strong>Duración:</strong> <span id="duracion"></span> minutos</li>
+          <li><strong>Presupuesto:</strong> $<span id="presupuesto"></span></li>
+          <li><strong>Ganancias:</strong> $<span id="ganancias"></span></li>
+        </ul>
+      </div>
+
+      <!-- Botón para cerrar -->
+      <button id="cerrarDetalle" class="btn btn-danger mt-2">Cerrar</button>
+    </div>
   </main>
 
   <footer class="text-muted py-3">
@@ -43,7 +90,6 @@
 
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/funcionalidad.js"></script>
-
 </body>
 
 </html>

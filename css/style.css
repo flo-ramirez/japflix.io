@@ -10,6 +10,11 @@
     background-color: beige;
 }
 
+.list-group-item{
+  background-color: #212529;
+  color: whitesmoke;
+}
+
 .card-content{
     height: 150px;
     overflow: auto;
@@ -17,6 +22,7 @@
 
 main {
     min-height: calc(100vh - 100px);
+    margin-top: 120px; /* Espacio suficiente para no superponer el contenedor flotante con el contenido principal */
   }
 
 .checked{
@@ -49,3 +55,64 @@ main {
   .stars-inner::before {
     content: "\f005 \f005 \f005 \f005 \f005"; /* 5 estrellas llenas */
   }
+
+  #peliculaSeleccionada {
+    position: fixed;
+    top: -100%; /* Inicia fuera de la pantalla */
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: block;
+    transition: top 0.3s ease-in-out;
+}
+
+#cerrarDetalle {
+    float: right;
+    cursor: pointer;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+}
+
+main {
+    margin-top: 120px;
+}
+
+.dropdown-menu {
+  background-color: #f8f9fa; /* Fondo claro */
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.dropdown-menu li {
+  padding: 5px 0;
+  list-style: none;
+}
+
+.pelicula-detalle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  display: none; /* Oculto por defecto */
+  z-index: 1000;
+}
+
+.dropdown-menu {
+  background-color: #f8f9fa; /* Fondo claro */
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.dropdown-menu li {
+  padding: 5px 0;
+  list-style: none;
+}

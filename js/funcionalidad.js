@@ -5,6 +5,11 @@ const API_URL = 'https://japceibal.github.io/japflix_api/movies-data.json';
 const inputBuscar = document.getElementById('inputBuscar');
 const btnBuscar = document.getElementById('btnBuscar');
 const lista = document.getElementById('lista');
+const contenedorPeliculaSeleccionada = document.getElementById('peliculaSeleccionada');
+const tituloPelicula = document.getElementById('tituloPelicula');
+const overviewPelicula = document.getElementById('overviewPelicula');
+const generosPelicula = document.getElementById('generosPelicula');
+const cerrarDetalle = document.getElementById('cerrarDetalle');
 
 // Variable para almacenar las películas cargadas
 let peliculas = [];
@@ -68,10 +73,37 @@ const mostrarPeliculas = (filtro = '') => {
           <div class="stars-inner" style="width: ${porcentajeEstrellas}%;"></div>
         </div>
       `;
+
+      // Agregar un evento de click para mostrar los detalles en el contenedor superior
+      item.addEventListener('click', () => {
+        mostrarDetallePelicula(pelicula);
+      });
+
       lista.appendChild(item);
     });
   }
 };
+
+// Función para mostrar los detalles de la película seleccionada en el contenedor superior
+const mostrarDetallePelicula = (pelicula) => {
+  tituloPelicula.textContent = pelicula.title;
+  overviewPelicula.textContent = pelicula.overview || 'No hay descripción disponible.';
+  generosPelicula.innerHTML = pelicula.genres.map(g => `<li>${g.name}</li>`).join('');
+
+  // Mostrar más detalles en el desplegable
+  document.getElementById('anioLanzamiento').textContent = pelicula.release_date.split('-')[0]; // Solo el año
+  document.getElementById('duracion').textContent = pelicula.runtime || 'No disponible';
+  document.getElementById('presupuesto').textContent = pelicula.budget ? pelicula.budget.toLocaleString() : 'No disponible';
+  document.getElementById('ganancias').textContent = pelicula.revenue ? pelicula.revenue.toLocaleString() : 'No disponible';
+
+  // Mostrar el contenedor superior
+  contenedorPeliculaSeleccionada.style.display = 'block';
+};
+
+// Evento para cerrar el contenedor superior
+cerrarDetalle.addEventListener('click', () => {
+  contenedorPeliculaSeleccionada.style.display = 'none';
+});
 
 // Evento para buscar películas
 btnBuscar.addEventListener('click', () => {
