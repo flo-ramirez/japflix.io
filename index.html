@@ -5,43 +5,39 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Japflix</title>
-
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/style.css">
-
-  <style>
-    .pelicula-detalle {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background-color: rgba(255, 255, 255, 0.9);
-      padding: 20px;
-      display: none; /* Oculto por defecto */
-      z-index: 1000;
-    }
-
-    .dropdown-menu {
-      background-color: #f8f9fa; /* Fondo claro */
-      padding: 10px;
-      border-radius: 5px;
-      width: 100%;
-    }
-
-    .dropdown-menu li {
-      padding: 5px 0;
-      list-style: none;
-    }
-  </style>
 </head>
+
+<style>.stars-outer {
+  display : inline-block;
+  position: relative;
+  font-family: FontAwesome;
+}
+.stars-outer::before {
+  content: "\f005 \f005 \f005 \f005 \f005"; /* 5 estrellas vacías */
+  color: #ccc;
+}
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  color: #f8ce0b; /* Color de estrellas llenas */
+}
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005"; /* 5 estrellas llenas */
+}
+</style>
 
 <body class="bg-dark">
   <main>
     <div class="text-center container">
       <div class="row py-lg-3">
         <div class="col-lg-6 col-md-8 mx-auto">
-          <h1 class="fw-light"><img src="img/japflix.png" alt=""></h1>
+          <h1 class="fw-light"><img src="img/japflix.png" alt="Japflix"></h1>
           <input type="search" class="form-control" name="buscar" id="inputBuscar" placeholder="Ej.: The Lion King">
           <button class="btn btn-primary m-2" id="btnBuscar">Buscar</button>
         </div>
@@ -51,42 +47,15 @@
     <div class="album">
       <ul class="list-group container" id="lista">
       </ul>
-    </div>
-
-    <!-- Contenedor de la película seleccionada -->
+ 
+    <!-- Contenedor de detalles de la película seleccionada -->
     <div id="peliculaSeleccionada" class="pelicula-detalle">
       <h2 id="tituloPelicula"></h2>
       <p id="overviewPelicula"></p>
       <ul id="generosPelicula"></ul>
-
-      <!-- Botón desplegable para mostrar más detalles -->
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownDetalles" data-bs-toggle="dropdown" aria-expanded="false">
-          Más detalles
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownDetalles">
-          <li><strong>Año de lanzamiento:</strong> <span id="anioLanzamiento"></span></li>
-          <li><strong>Duración:</strong> <span id="duracion"></span> minutos</li>
-          <li><strong>Presupuesto:</strong> $<span id="presupuesto"></span></li>
-          <li><strong>Ganancias:</strong> $<span id="ganancias"></span></li>
-        </ul>
-      </div>
-
-      <!-- Botón para cerrar -->
       <button id="cerrarDetalle" class="btn btn-danger mt-2">Cerrar</button>
     </div>
   </main>
-
-  <footer class="text-muted py-3">
-    <div class="container">
-      <p class="float-end mb-1">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p class="mb-1">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">
-          Jovenes a Programar</a>.
-      <p class="mb-1">Generado con fines estrictamente educativos.</p>
-    </div>
-  </footer>
 
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/funcionalidad.js"></script>
